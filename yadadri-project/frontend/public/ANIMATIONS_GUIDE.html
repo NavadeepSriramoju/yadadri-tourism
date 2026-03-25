@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yadadri Temple - Advanced Animations Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: linear-gradient(135deg, #FDF6E3 0%, #F5E6C8 100%);
+            color: #2C1A0E;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6B1A1A 0%, #8B2020 100%);
+            color: #FFD700;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #D4AF37;
+            margin-bottom: 4rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(107,26,26,0.3);
+        }
+        
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            color: rgba(253,246,227,0.9);
+            font-style: italic;
+        }
+        
+        .features-section {
+            margin-bottom: 4rem;
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #FF6B1A;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(107,26,26,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(107,26,26,0.2);
+            border-left-color: #FFD700;
+        }
+        
+        .feature-box h2 {
+            color: #6B1A1A;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-box ul {
+            margin-left: 1.5rem;
+            color: #5C3A1E;
+        }
+        
+        .feature-box li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .demo {
+            background: #FFFDF7;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px dashed #D4AF37;
+            margin-top: 1rem;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(212,175,55,0.3); color: #FFD700; }
+            50% { text-shadow: 0 0 20px rgba(255,107,26,0.8); color: #FF6B1A; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .demo-text {
+            font-size: 2rem;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        .demo-icon {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+            margin: 1rem;
+        }
+        
+        .animation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .animation-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #F5E6C8;
+            box-shadow: 0 2px 8px rgba(107,26,26,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .animation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(107,26,26,0.15);
+            border-color: #FFD700;
+        }
+        
+        .animation-card h3 {
+            color: #FF6B1A;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .animation-card p {
+            color: #5C3A1E;
+            font-size: 0.95rem;
+        }
+        
+        code {
+            background: #FDF6E3;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            color: #8B2020;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #FFD700, #FF6B1A, #FFD700);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease infinite;
+        }
+        
+        .highlight {
+            background: rgba(255, 107, 26, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #FF6B1A;
+            margin: 1rem 0;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B1A 0%, #FFD700 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏛️ Yadadri Temple</h1>
+            <p>Advanced Animations & Modern UI Enhancements</p>
+            <p style="margin-top: 1rem; font-size: 1rem;">✨ Futuristic Design with Immersive Animations ✨</p>
+        </header>
+        
+        <div class="features-section">
+            <div class="version-badge">v2.0 - Enhanced Experience</div>
+            
+            <div class="feature-box">
+                <h2>🎨 Visual Enhancements</h2>
+                <ul>
+                    <li><strong>Aurora Glow Effects:</strong> Animated gradient backgrounds on hero section</li>
+                    <li><strong>Floating Particles:</strong> Dynamic particle system with smooth animations</li>
+                    <li><strong>Gradient Animations:</strong> Smooth color transitions on text and elements</li>
+                    <li><strong>3D Hover Effects:</strong> Cards with rotateY and perspective transforms</li>
+                    <li><strong>Glowing Borders:</strong> Dynamic box-shadow effects on interactive elements</li>
+                    <li><strong>Shimmer Effects:</strong> Animated linear gradients for visual interest</li>
+                </ul>
+                <div class="demo">
+                    <span class="demo-text">✨ Glowing Text Effect ✨</span>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h2>⚡ Advanced Button Animations</h2>
+                <ul>
+                    <li><strong>Shine Animation:</strong> Radial gradient shine effect on hover</li>
+                    <li><strong>Scale & Lift:</strong> Buttons scale up and lift on interaction</li>
+                    <li><strong>Gradient Transitions:</strong> Smooth color shifts using linear gradients</li>
+                    <li><strong>Shadow Glow:</strong> Multi-layer shadow for depth and elegance</li>
+                    <li><strong>Backdrop Effects:</strong> Blurred backgrounds for modern feel</li>
+                </ul>
+                <div class="demo">
+                    <button style="
+                        background: linear-gradient(135deg, #FF6B1A, #FF8C42);
+                        color: white;
+                        border: none;
+                        padding: 12px 28px;
+                        border-radius: 5px;
+                        font-family: 'Cinzel', serif;
+                        font-weight: bold;
+                        cursor: pointer;
+                        box-shadow: 0 4px 15px rgba(255,107,26,0.4);
+                        transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.boxShadow = '0 8px 25px rgba(255,107,26,0.6)'; this.style.transform = 'translateY(-2px) scale(1.05)'"
+                    onmouseout="this.style.boxShadow = '0 4px 15px rgba(255,107,26,0.4)'; this.style.transform = 'translateY(0) scale(1)'">
+                        Hover Me ✨
+                    </button>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h2>🎯 Interactive Elements</h2>
+                <ul>
+                    <li><strong>Smooth Transitions:</strong> All interactions use cubic-bezier easing</li>
+                    <li><strong>Staggered Animations:</strong> Sequential animations for list items with delays</li>
+                    <li><strong>Backdrop Blur:</strong> Modern frosted glass effect on overlays</li>
+                    <li><strong>Icon Animations:</strong> Icons bounce and spin on interaction</li>
+                    <li><strong>Form Enhancements:</strong> Animated labels and error states</li>
+                </ul>
+                <div class="demo">
+                    <span class="demo-icon">🕌</span>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h2>🌈 Color Palette Enhancements</h2>
+                <ul>
+                    <li><strong>Cyan Accents (#00D9FF):</strong> Modern tech glow effects</li>
+                    <li><strong>Purple (#9D4EDD):</strong> Spiritual mystique elements</li>
+                    <li><strong>Pink (#FF006E):</strong> Vibrant accent colors</li>
+                    <li><strong>Gold (#D4AF37):</strong> Premium sacred elements</li>
+                    <li><strong>Saffron (#FF6B1A):</strong> Traditional spiritual energy</li>
+                </ul>
+                <div class="demo" style="background: linear-gradient(135deg, rgba(0,217,255,0.1), rgba(157,78,221,0.1), rgba(255,107,26,0.1))">
+                    <span style="font-size: 2rem; font-weight: bold; color: #FF6B1A">🎨 Multi-Color Palette</span>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h2>📱 Animation Framework</h2>
+                <div class="animation-grid">
+                    <div class="animation-card">
+                        <h3>fadeSlideDown</h3>
+                        <p>Smooth entrance from top with fade</p>
+                    </div>
+                    <div class="animation-card">
+                        <h3>fadeSlideUp</h3>
+                        <p>Smooth entrance from bottom</p>
+                    </div>
+                    <div class="animation-card">
+                        <h3>slideInLeft</h3>
+                        <p>Horizontal slide from left</p>
+                    </div>
+                    <div class="animation-card">
+                        <h3>bounceIn</h3>
+                        <p>Spring-like entrance effect</p>
+                    </div>
+                    <div class="animation-card">
+                        <h3>pulseColor</h3>
+                        <p>Color breathing effect</p>
+                    </div>
+                    <div class="animation-card">
+                        <h3>glow</h3>
+                        <p>Text shadow pulse animation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-box">
+                <h2>🎬 Page-Specific Animations</h2>
+                <ul>
+                    <li><strong>Hero Section:</strong> Aurora gradient background with rotating Om symbol</li>
+                    <li><strong>Features Section:</strong> 3D rotating icons with radial gradient effects</li>
+                    <li><strong>Cards Grid:</strong> Staggered entrance with hover rotations</li>
+                    <li><strong>Booking Form:</strong> Cascading field animations with focus effects</li>
+                    <li><strong>Toast Notifications:</strong> Animated entrance and exit with gradient backgrounds</li>
+                    <li><strong>Modal Dialogs:</strong> Smooth scale and fade animations</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <strong>🔮 Pro Tip:</strong> All animations use modern CSS properties for optimal performance:
+                <ul style="margin: 0.5rem 0 0 1.5rem; color: #5C3A1E">
+                    <li>GPU-accelerated transforms (translateY, scale, rotate)</li>
+                    <li>Efficient filter effects (drop-shadow, blur)</li>
+                    <li>Optimized keyframe animations with proper timing functions</li>
+                    <li>Smooth cubic-bezier easing for natural motion</li>
+                </ul>
+            </div>
+            
+            <div class="feature-box" style="border-left-color: #00D9FF; background: linear-gradient(135deg, rgba(0,217,255,0.05), rgba(255,255,255,0.95))">
+                <h2>🚀 Browser Support & Performance</h2>
+                <ul>
+                    <li>✅ Modern browsers (Chrome, Firefox, Safari, Edge)</li>
+                    <li>✅ Mobile-responsive animations</li>
+                    <li>✅ Hardware acceleration enabled</li>
+                    <li>✅ Smooth 60fps animations</li>
+                    <li>✅ Reduced motion support for accessibility</li>
+                    <li>✅ Backdrop-filter support for glass effects</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer style="text-align: center; padding: 2rem; color: #5C3A1E; border-top: 2px solid #FFD700; margin-top: 4rem">
+            <p>🙏 Enhanced by AI - Yadadri Temple Tourism Platform v2.0</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; font-style: italic">Created with ✨ Advanced CSS Animations & Modern Web Design</p>
+        </footer>
+    </div>
+</body>
+</html>

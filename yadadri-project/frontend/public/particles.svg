@@ -1,0 +1,38 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="particle-bg">
+  <defs>
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
+        50% { transform: translateY(-30px) translateX(10px) scale(1.2); opacity: 0.8; }
+      }
+      @keyframes pulse {
+        0%, 100% { r: 2; opacity: 0.3; }
+        50% { r: 4; opacity: 0.8; }
+      }
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .particle-1 { animation: float 5s ease-in-out infinite; }
+      .particle-2 { animation: float 7s ease-in-out infinite 1s; }
+      .particle-3 { animation: float 9s ease-in-out infinite 2s; }
+      .particle-4 { animation: float 6s ease-in-out infinite 0.5s; }
+      .particle-5 { animation: float 8s ease-in-out infinite 1.5s; }
+    </style>
+  </defs>
+  
+  <!-- Animated particles -->
+  <circle cx="100" cy="100" r="2" fill="#FFD700" class="particle-1"/>
+  <circle cx="200" cy="150" r="2" fill="#FF6B1A" class="particle-2"/>
+  <circle cx="300" cy="80" r="2" fill="#D4AF37" class="particle-3"/>
+  <circle cx="450" cy="180" r="2" fill="#FFD700" class="particle-4"/>
+  <circle cx="550" cy="120" r="2" fill="#FF8C42" class="particle-5"/>
+  <circle cx="650" cy="200" r="2" fill="#D4AF37" class="particle-1"/>
+  <circle cx="750" cy="100" r="2" fill="#FFD700" class="particle-2"/>
+  
+  <!-- More particles -->
+  <circle cx="150" cy="400" r="2" fill="#FF6B1A" class="particle-3"/>
+  <circle cx="350" cy="450" r="2" fill="#D4AF37" class="particle-4"/>
+  <circle cx="500" cy="380" r="2" fill="#FFD700" class="particle-5"/>
+  <circle cx="700" cy="420" r="2" fill="#FF8C42" class="particle-1"/>
+</svg>
