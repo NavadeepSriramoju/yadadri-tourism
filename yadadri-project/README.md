@@ -14,6 +14,12 @@ This project now features stunning futuristic animations, glowing effects, and s
 - **60fps Performance** - GPU-accelerated animations
 - **Mobile Responsive** - All animations work perfectly on mobile
 
+## 🌐 Live Demo
+
+[🚀 View Live Website](https://navadeepsriramoju.github.io/yadadri-tourism/)
+
+*Note: This demo showcases the advanced animations and UI. Backend features (authentication, darshan timings) require local backend deployment for full functionality.*
+
 ---
 
 ## 📁 Project Structure
