@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const BASE_URL = "http://localhost:8080";
 
+// Futuristic color palette with neon effects
 const COLORS = `
   :root {
     --saffron: #FF6B1A;
@@ -884,7 +885,316 @@ const GLOBAL_STYLES = `
     .nav-link { padding: 8px 8px; font-size: 0.7rem; }
     .admin-header { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ════════════════════════════════════════════════════════════════
+     ADVANCED FUTURISTIC EFFECTS – NEW IN v3.0
+  ════════════════════════════════════════════════════════════════ */
+
+  /* ── Neon Glow Border Effect ── */
+  @keyframes neonGlow {
+    0% { box-shadow: 0 0 5px rgba(0,217,255,0.3), inset 0 0 5px rgba(0,217,255,0.1); }
+    50% { box-shadow: 0 0 20px rgba(0,217,255,0.6), inset 0 0 20px rgba(0,217,255,0.2); }
+    100% { box-shadow: 0 0 5px rgba(0,217,255,0.3), inset 0 0 5px rgba(0,217,255,0.1); }
+  }
+
+  /* ── Holographic Shimmer ── */
+  @keyframes holoShimmer {
+    0% { transform: translateY(-100%) rotateX(80deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(100%) rotateX(80deg); opacity: 0; }
+  }
+
+  /* ── Cyber Grid ── */
+  @keyframes cyberGrid {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 100px 100px, 40px 60px; }
+  }
+
+  /* ── Floating Hologram ── */
+  @keyframes floatGlitch {
+    0%, 100% { transform: translateY(0) skew(0deg); }
+    20% { transform: translateY(-12px) skew(-1deg); }
+    40% { transform: translateY(0) skew(0deg); }
+    60% { transform: translateY(-8px) skew(1deg); }
+    80% { transform: translateY(0) skew(-1deg); }
+  }
+
+  /* ── Cyber Pulse ── */
+  @keyframes cyberPulse {
+    0%, 100% { filter: drop-shadow(0 0 2px rgba(0,217,255,0.3)) drop-shadow(0 0 5px rgba(157,78,221,0.2)); }
+    50% { filter: drop-shadow(0 0 8px rgba(0,217,255,0.8)) drop-shadow(0 0 15px rgba(157,78,221,0.6)); }
+  }
+
+  /* ── Scifi Text Animation ── */
+  @keyframes scifiText {
+    0%, 19%, 21%, 58%, 60%, 100% { text-shadow: -2px 0 #00D9FF, 2px 0 #FF006E, -4px -8px 0 #00D9FF, 4px -8px 0 #FF006E; }
+    20%, 24%, 55% { text-shadow: 2px 10px 0 rgba(0,217,255,0.5); }
+    25%, 54% { text-shadow: -2px -10px 0 rgba(255,0,110,0.5); }
+    55% { text-shadow: -2px 0 #9D4EDD, 2px 0 #FF6B1A; }
+  }
+
+  /* ── Quantum State Change ── */
+  @keyframes quantumFlip {
+    0% { transform: perspective(1000px) rotateY(0) rotateX(0); opacity: 1; }
+    50% { transform: perspective(1000px) rotateY(180deg) rotateX(10deg); opacity: 0.7; }
+    100% { transform: perspective(1000px) rotateY(360deg) rotateX(0); opacity: 1; }
+  }
+
+  /* ── Particles/Micro Animation ── */
+  .particle-effect {
+    position: absolute;
+    pointer-events: none;
+  }
+  .particle-glow {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: particleDrift 8s ease-out forwards;
+    opacity: 0.8;
+  }
+  @keyframes particleDrift {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+  }
+
+  /* ── Gradient Shift ── */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* ── Matrix Code Rain (subtle) ── */
+  @keyframes codeRain {
+    0% { transform: translateY(-100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  /* ── Cyber Card Enhancement ── */
+  .cyber-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0,217,255,0.05), rgba(157,78,221,0.05));
+    border: 1px solid rgba(0,217,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .cyber-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0,217,255,0.3), transparent);
+    animation: holoShimmer 6s infinite;
+  }
+
+  /* ── Enhanced Button with Neon ── */
+  .btn-neon {
+    position: relative;
+    border: 2px solid var(--cyan);
+    background: transparent;
+    color: var(--cyan);
+    text-shadow: 0 0 5px rgba(0,217,255,0.5);
+    box-shadow: 0 0 10px rgba(0,217,255,0.4), inset 0 0 10px rgba(0,217,255,0.1);
+    animation: neonGlow 2s ease-in-out infinite;
+    padding: 10px 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-neon:hover {
+    box-shadow: 0 0 20px rgba(0,217,255,0.8), inset 0 0 20px rgba(0,217,255,0.3);
+    transform: scale(1.05);
+    color: white;
+    text-shadow: 0 0 10px rgba(0,217,255,0.9);
+  }
+
+  /* ── Status Indicator with Pulse ── */
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(0,217,255,0.1);
+    border: 1px solid rgba(0,217,255,0.3);
+    color: var(--cyan);
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: cyberPulse 1.5s ease-in-out infinite, float 3s ease-in-out infinite;
+  }
+
+  /* ── Enhanced Tooltip ── */
+  .tooltip-futuristic {
+    position: relative;
+  }
+  .tooltip-futuristic::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(0,217,255,0.9), rgba(157,78,221,0.9));
+    border: 1px solid rgba(0,217,255,0.5);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0,217,255,0.4);
+  }
+  .tooltip-futuristic:hover::after {
+    opacity: 1;
+  }
+
+  /* ── Glitch Character ── */
+  @keyframes glitch-1 {
+    0% { clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%); transform: translate(-2px, -2px); }
+    20% { clip-path: polygon(0 20%, 100% 20%, 100% 25%, 0 25%); transform: translate(2px, 2px); }
+    40% { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); transform: translate(-2px, 2px); }
+    60% { clip-path: polygon(0 70%, 100% 70%, 100% 75%, 0 75%); transform: translate(2px, -2px); }
+    100% { clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%); transform: translate(0, 0); }
+  }
+
+  /* ── Loading Animation v2 ── */
+  .spinner-modern {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0,217,255,0.1);
+    border-top: 3px solid var(--cyan);
+    border-right: 3px solid var(--purple);
+    border-radius: 50%;
+    animation: spinModern 1s linear infinite, pulse 2s ease-in-out infinite;
+  }
+  @keyframes spinModern {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── Data Visualization Bar ── */
+  .bar-chart-futuristic {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 40px;
+    position: relative;
+  }
+  .bar-segment {
+    flex: 1;
+    background: linear-gradient(to top, var(--cyan), var(--purple));
+    border-radius: 2px 2px 0 0;
+    min-height: 8px;
+    animation: barGrow 0.6s ease-out backwards;
+    box-shadow: 0 0 8px rgba(0,217,255,0.4);
+  }
+  .bar-segment:nth-child(1) { animation-delay: 0.1s; }
+  .bar-segment:nth-child(2) { animation-delay: 0.2s; }
+  .bar-segment:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes barGrow {
+    from { height: 0; opacity: 0; }
+    to { height: var(--h, 50%); opacity: 1; }
+  }
+
+  /* ── Hologram Frame Effect ── */
+  .hologram-frame {
+    position: relative;
+    border: 2px solid var(--cyan);
+    box-shadow: inset 0 0 10px rgba(0,217,255,0.2), 0 0 20px rgba(0,217,255,0.3);
+  }
+  .hologram-frame::before,
+  .hologram-frame::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    height: 2px;
+    width: 100%;
+    animation: slideHolo 3s ease-in-out infinite;
+  }
+  .hologram-frame::before {
+    top: 0;
+  }
+  .hologram-frame::after {
+    bottom: 0;
+    animation-delay: 1.5s;
+  }
+  @keyframes slideHolo {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  /* ── Cyber Success State ── */
+  .success-pulse {
+    animation: successGlow 0.6s ease-out;
+  }
+  @keyframes successGlow {
+    0% { box-shadow: 0 0 0 0 rgba(34,139,34,0.7); }
+    70% { box-shadow: 0 0 0 25px rgba(34,139,34,0); }
+  }
+
+  /* ── Enhanced Loading Screen ── */
+  .loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(74,14,14,0.9), rgba(0,0,0,0.95));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
+  .loading-text {
+    color: var(--cyan);
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: scifiText 0.8s ease forwards;
+  }
+
+  /* ── Cyber Link Hover ── */
+  a.cyber-link {
+    position: relative;
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  a.cyber-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--cyan);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,217,255,0.5);
+  }
+  a.cyber-link:hover::after {
+    width: 100%;
+  }
 `;
+
 
 // ─────────────────────────────────────────────────────────────────
 // TOAST
@@ -1432,6 +1742,26 @@ export default function App() {
     <>
       <style>{COLORS + GLOBAL_STYLES}</style>
       <Navbar page={page} setPage={setPage} />
+
+      {/* Version Display - Floating Badge */}
+      <div style={{
+        position: 'fixed',
+        bottom: 20,
+        left: 20,
+        zIndex: 100,
+        fontSize: '0.7rem',
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
+        fontFamily: "'Cinzel', serif",
+        padding: '4px 12px',
+        borderRadius: '20px',
+        background: 'linear-gradient(135deg, rgba(0,217,255,0.1), rgba(157,78,221,0.1))',
+        border: '1px solid rgba(0,217,255,0.3)',
+        color: 'var(--cyan)',
+        animation: 'float 4s ease-in-out infinite',
+      }}>
+        v3.0 ✨
+      </div>
 
       {page === "home"    && <HomePage setPage={setPage} />}
       {page === "timings" && <DarshanPage />}
