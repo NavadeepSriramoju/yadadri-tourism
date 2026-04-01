@@ -1,88 +1,93 @@
 package com.yadadri.temple.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
+/**
+ * Entity representing a Darshan (temple visit) timing slot.
+ * Stores information about different Seva (service) offerings with their availability.
+ */
 @Entity
-@Table(name = "darshan_timings")
+@Table(name = "darshan_timings", indexes = {
+    @Index(name = "idx_active", columnList = "active"),
+    @Index(name = "idx_day_availability", columnList = "dayAvailability")
+})
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DarshanTiming {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String sevaName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String timeSlot;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String price; // "Free" or "Paid"
 
     @Column(nullable = false)
     private Integer capacity;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
+    private Integer currentBooked;
+
+    @Column(nullable = false, length = 100)
     private String dayAvailability; // "All Days", "Friday", "Sunday", etc.
 
     @Column(nullable = false)
     private boolean active = true;
 
-    public DarshanTiming() {}
+    @Column(name = "created_at", nullable = false, updatable = false)
+    @Builder.Default
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    public DarshanTiming(Long id, String sevaName, String timeSlot, String price, Integer capacity, String dayAvailability, boolean active) {
-        this.id = id;
-        this.sevaName = sevaName;
-        this.timeSlot = timeSlot;
-        this.price = price;
-        this.capacity = capacity;
-        this.dayAvailability = dayAvailability;
-        this.active = active;
+    @Column(name = "updated_at")
+    @Builder.Default
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    /**
+     * Calculate available slots
+     */
+    public Integer getAvailableSlots() {
+        return capacity - (currentBooked != null ? currentBooked : 0);
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getSevaName() { return sevaName; }
-    public void setSevaName(String sevaName) { this.sevaName = sevaName; }
-    public String getTimeSlot() { return timeSlot; }
-    public void setTimeSlot(String timeSlot) { this.timeSlot = timeSlot; }
-    public String getPrice() { return price; }
-    public void setPrice(String price) { this.price = price; }
-    public Integer getCapacity() { return capacity; }
-    public void setCapacity(Integer capacity) { this.capacity = capacity; }
-    public String getDayAvailability() { return dayAvailability; }
-    public void setDayAvailability(String dayAvailability) { this.dayAvailability = dayAvailability; }
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
-
-    public static DarshanTimingBuilder builder() {
-        return new DarshanTimingBuilder();
+    /**
+     * Check if slots are available
+     */
+    public boolean isAvailable() {
+        return active && getAvailableSlots() > 0;
     }
 
-    public static class DarshanTimingBuilder {
-        private String sevaName;
-        private String timeSlot;
-        private String price;
-        private Integer capacity;
-        private String dayAvailability;
-        private boolean active;
+    /**
+     * Update the currentBooked count before saving
+     */
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
-        public DarshanTimingBuilder sevaName(String sevaName) { this.sevaName = sevaName; return this; }
-        public DarshanTimingBuilder timeSlot(String timeSlot) { this.timeSlot = timeSlot; return this; }
-        public DarshanTimingBuilder price(String price) { this.price = price; return this; }
-        public DarshanTimingBuilder capacity(Integer capacity) { this.capacity = capacity; return this; }
-        public DarshanTimingBuilder dayAvailability(String dayAvailability) { this.dayAvailability = dayAvailability; return this; }
-        public DarshanTimingBuilder active(boolean active) { this.active = active; return this; }
-
-        public DarshanTiming build() {
-            DarshanTiming dt = new DarshanTiming();
-            dt.setSevaName(this.sevaName);
-            dt.setTimeSlot(this.timeSlot);
-            dt.setPrice(this.price);
-            dt.setCapacity(this.capacity);
-            dt.setDayAvailability(this.dayAvailability);
-            dt.setActive(this.active);
-            return dt;
+    @PrePersist
+    public void prePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
+        if (this.updatedAt == null) {
+            this.updatedAt = LocalDateTime.now();
+        }
+        if (this.currentBooked == null) {
+            this.currentBooked = 0;
         }
     }
 }
+

@@ -1,0 +1,24 @@
+services:
+  - type: docker
+    name: yadadri-backend
+    rootDir: .
+    dockerfile: ./Dockerfile
+    port: 8080
+    env:
+      - key: java.version
+        value: 17
+    healthCheckPath: /health
+    
+  - type: static
+    name: yadadri-frontend
+    rootDir: ./frontend
+    buildCommand: npm run build
+    staticPublishPath: ./build
+    envs:
+      - key: REACT_APP_API_URL
+        value: https://yadadri-backend-render.onrender.com
+
+redirects:
+  - source: "/*"
+    destination: "/index.html"
+    type: 200
