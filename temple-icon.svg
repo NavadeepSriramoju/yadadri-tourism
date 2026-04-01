@@ -1,0 +1,42 @@
+<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="templeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B1A;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Hill -->
+  <path d="M 50 180 Q 100 80 150 180 Z" fill="url(#templeGrad)" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Temple Main Structure -->
+  <rect x="80" y="100" width="40" height="70" fill="#D4AF37" filter="url(#glow)"/>
+  
+  <!-- Temple Peak (Gopuram) -->
+  <polygon points="100,50 70,100 130,100" fill="url(#templeGrad)" filter="url(#glow)"/>
+  
+  <!-- Decorative Spire -->
+  <circle cx="100" cy="45" r="4" fill="#FFD700" filter="url(#glow)"/>
+  
+  <!-- Door -->
+  <rect x="90" y="120" width="20" height="30" fill="#8B4513" opacity="0.8"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="70" r="3" fill="#FFD700" filter="url(#glow)"/>
+  <circle cx="90" cy="95" r="2" fill="#FFD700" filter="url(#glow)"/>
+  <circle cx="110" cy="95" r="2" fill="#FFD700" filter="url(#glow)"/>
+  
+  <!-- Animated glow -->
+  <circle cx="100" cy="100" r="60" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.3">
+    <animate attributeName="r" values="60;80;60" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

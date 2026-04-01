@@ -1,0 +1,16 @@
+# VS Code
+.vscode/
+
+# Node / React
+node_modules/
+build/
+dist/
+.env
+
+# Spring Boot
+target/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
