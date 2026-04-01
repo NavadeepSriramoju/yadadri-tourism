@@ -2,6 +2,18 @@
 
 A complete full-stack web application for Yadadri Temple Tourism built with **React** (frontend) and **Spring Boot** (backend).
 
+## ✨ **Version 2.0 - Advanced Animations & Futuristic UI**
+
+This project now features stunning futuristic animations, glowing effects, and smooth transitions with:
+- **Aurora Glow Effects** - Animated gradient backgrounds
+- **3D Card Hover Effects** - Interactive rotations and transforms
+- **Smooth Page Animations** - Staggered entrance effects
+- **Advanced Button Animations** - Shine and scale effects
+- **Form Input Enhancements** - Glow effects and smooth transitions
+- **Toast Notifications** - Animated auto-exit notifications
+- **60fps Performance** - GPU-accelerated animations
+- **Mobile Responsive** - All animations work perfectly on mobile
+
 ---
 
 ## 📁 Project Structure
@@ -217,6 +229,41 @@ app.cors.allowed-origins=http://localhost:3000
 - H2 In-Memory Database
 - Lombok
 - Java 17
+
+---
+
+## ✨ Advanced Animation Features (v2.0)
+
+### 🎬 Animation Effects
+- **Aurora Glow**: Animated gradient backgrounds with cyan & purple glows
+- **3D Effects**: Card hover rotations with perspective transforms
+- **Floating Elements**: Om symbol, badges, and icons with smooth floating
+- **Text Glow**: Pulsing shadow effects on headings and titles
+- **Button Shine**: Radial gradient shine animation on hover
+- **Form Glow**: Input focus states with multi-layer shadows
+- **Icon Animations**: Bounce and spin effects on interaction
+- **Toast Notifications**: Auto-exit animations with gradient backgrounds
+- **Modal Effects**: Blur backdrop with smooth entrance
+- **Staggered Animations**: Sequential entrance timing for elements
+
+### 🎨 Animation Framework
+The project uses **15+ CSS keyframe animations** for smooth 60fps performance:
+- `fadeSlideDown`, `fadeSlideUp`, `slideInLeft`, `slideInRight`
+- `bounceIn`, `glow`, `float`, `shimmer`, `pulse`
+- `rotate3d`, `spin`, `aurora`, `pulseColor`, `omGlow`
+
+### 📚 Documentation
+- Detailed animation guide: See [ANIMATIONS_DOCUMENTATION.md](./ANIMATIONS_DOCUMENTATION.md)
+- Interactive demo: Open [ANIMATIONS_GUIDE.html](./frontend/public/ANIMATIONS_GUIDE.html) in browser
+
+### 🎨 Color Palette
+```css
+--saffron: #FF6B1A           /* Spiritual energy */
+--gold: #D4AF37             /* Sacred premium color */
+--maroon: #6B1A1A           /* Deep traditional */
+--cyan: #00D9FF             /* Futuristic glow */
+--purple: #9D4EDD           /* Spiritual mystique */
+```
 
 ---
 
